@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punto 4</title>
+</head>
+<body>
+    <script>
+
+class User {
+  constructor(name, email, password) {
+    this.name = name;
+    this.email = email;
+    this.password = password;
+    this.cart = [];
+  }
+
+  addToCart(product) {
+    this.cart.push(product);
+    console.log(`${product.name} added to cart.`);
+  }
+
+  emptyCart() {
+    this.cart = [];
+    console.log("Cart emptied.");
+  }
+
+  makePayment() {
+    let total = this.cart.reduce((acc, product) => acc + product.price, 0);
+    console.log(`Total to pay: $${total}`);
+    // Placeholder logic for processing payment
+    if (total > 0) {
+      console.log("Payment processed successfully.");
+      this.emptyCart(); // Empty cart after successful payment
+    } else {
+      console.log("Error: Cart is empty. Add items to the cart before making a payment.");
+    }
+  }
+
+  manageAccount(newName, newEmail, newPassword) {
+    if (newName) {
+      this.name = newName;
+    }
+    if (newEmail) {
+      this.email = newEmail;
+    }
+    if (newPassword) {
+      this.password = newPassword;
+    }
+    console.log("Account details updated.");
+  }
+}
+
+
+class Product {
+  constructor(name, price) {
+    this.name = name;
+    this.price = price;
+  }
+}
+
+// Example usage
+const user1 = new User("Juan", "juan@example.com", "123456");
+const product1 = new Product("Shirt", 25.000);
+const product2 = new Product("Pants", 80.000);
+
+user1.addToCart(product1);
+user1.addToCart(product2);
+user1.makePayment();
+
+// Manage account
+user1.manageAccount("Juan Giraldo", "juan.giraldo@example.com", "654321");
+
+user1.emptyCart();
+
+    </script>
+    
+</body>
+</html>

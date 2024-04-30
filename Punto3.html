@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punto 3</title>
+</head>
+<body>
+    <script>
+
+class Product {
+    constructor(name, quantity) {
+        this.name = name;
+        this.quantity = quantity;
+    }
+}
+
+// Function to add a new product to the inventory
+function addProduct(inventory, name, quantity) {
+    const newProduct = new Product(name, quantity);
+    inventory.push(newProduct);
+}
+
+// Function to update the quantity of a product in the inventory
+function updateQuantity(inventory, name, newQuantity) {
+    for (let i = 0; i < inventory.length; i++) {
+        if (inventory[i].name === name) {
+            inventory[i].quantity = newQuantity;
+            break;
+        }
+    }
+}
+
+// Function to remove an obsolete product from the inventory
+function removeProduct(inventory, name) {
+    for (let i = 0; i < inventory.length; i++) {
+        if (inventory[i].name === name) {
+            inventory.splice(i, 1);
+            break;
+        }
+    }
+}
+
+// Function to generate a report on the state of the inventory
+function generateReport(inventory) {
+    console.log("Inventory:");
+    for (const product of inventory) {
+        console.log(`${product.name}: ${product.quantity}`);
+    }
+}
+
+// Example of usage
+const inventory = [];
+
+addProduct(inventory, "Product A", 10);
+addProduct(inventory, "Product B", 20);
+addProduct(inventory, "Product C", 15);
+
+generateReport(inventory);
+
+updateQuantity(inventory, "Product A", 5);
+removeProduct(inventory, "Product C");
+
+generateReport(inventory);
+
+    </script>
+    
+</body>
+</html>
